@@ -9,6 +9,6 @@ ArrayList<int> generateArrayList(size_t size);
 
 long long iosifTest(ArrayList<int>& arrayList, size_t step);
 
-void iosifTestBundle(const ArrayList<int> sizes, size_t step, std::ostream& out);
+void iosifTestBundle(const ArrayList<int>& sizes, size_t step, std::ostream& out);
 
 #endif

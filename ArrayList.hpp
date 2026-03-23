@@ -113,6 +113,15 @@ public:
         return result;
     }
 
+    void remove(size_t index)
+    {
+        for (size_t i = index; i < size_-1; ++i)
+        {
+            head_[i] = head_[i+1];
+        }
+        --size_;
+    }
+
     bool contains(const T& value) const
     {
         for (size_t i = 0; i < size_; ++i)

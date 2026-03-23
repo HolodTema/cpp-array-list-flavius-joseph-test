@@ -32,7 +32,7 @@ long long iosifTest(ArrayList<int>& arrayList, size_t step)
 }
 
 
-void iosifTestBundle(const ArrayList<int> sizes, size_t step, std::ostream& out)
+void iosifTestBundle(const ArrayList<int>& sizes, size_t step, std::ostream& out)
 {
     long long time = 0L;
     for (int i = 0; i < sizes.getSize(); ++i)
