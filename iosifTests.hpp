@@ -7,8 +7,10 @@
 
 ArrayList<int> generateArrayList(size_t size);
 
-long long iosifTest(ArrayList<int>& arrayList, size_t step);
+int iosifTest(ArrayList<int>& arrayList, size_t step);
 
 void iosifTestBundle(const ArrayList<int>& sizes, size_t step, std::ostream& out);
+
+void iosifTestCLI(std::istream& is, std::ostream& os);
 
 #endif

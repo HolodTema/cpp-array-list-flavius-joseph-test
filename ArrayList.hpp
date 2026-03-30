@@ -8,7 +8,7 @@ class ArrayList
 {
 public:
     static constexpr size_t START_CAPACITY = 20;
-    static constexpr float CAPACITY_INCREASE_COEFF = 1.5;
+    static constexpr float CAPACITY_INCREASE_COEFF = 2.0;
 
     ArrayList():
         capacity_(START_CAPACITY),
@@ -37,13 +37,13 @@ public:
 
     ArrayList(ArrayList&& other) noexcept:
         capacity_(other.capacity_),
-        size_(other.size_)
+        size_(other.size_),
+        head_(other.head_)
     {
-        std::swap(head_, other.head_);
-        delete[] other.head_;
         other.head_ = nullptr;
+        other.capacity_ = 0;
+        other.size_ = 0;
     }
-
     
     ArrayList& operator=(const ArrayList& other)
     {
@@ -59,10 +59,13 @@ public:
     {
         if (this != &other)
         {
+            delete[] head_;
             capacity_ = other.capacity_;
             size_ = other.size_;
             head_ = other.head_;
             other.head_ = nullptr;
+            other.capacity_ = 0;
+            other.size_ = 0;
         }
         return *this;
     }
@@ -75,13 +78,7 @@ public:
 
     void add(const T& element)
     {
-        if (size_ < capacity_)
-        {
-            head_[size_] = element;
-            ++size_;
-        }
-        else
-        {
+        if (size_ >= capacity_) {
             capacity_ = static_cast<size_t>(capacity_ * CAPACITY_INCREASE_COEFF);
             T* newHead = new T[capacity_];
             for (size_t i = 0; i < size_; ++i)
@@ -91,10 +88,9 @@ public:
             std::swap(head_, newHead);
             delete[] newHead;
             newHead = nullptr;
-
-            head_[size_] = element;
-            ++size_;
         }
+        head_[size_] = element;
+        ++size_;
     }
     
     void replace(size_t index, const T& element)

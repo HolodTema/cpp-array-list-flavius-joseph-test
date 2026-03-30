@@ -2,8 +2,7 @@
 #include "ArrayList.hpp"
 #include "iosifTests.hpp"
 
-int main()
-{
+void noCli() {
     ArrayList<int> sizes(8);
     sizes.add(1000);
     sizes.add(5000);
@@ -16,5 +15,14 @@ int main()
     size_t step = 3;
 
     iosifTestBundle(sizes, step, std::cout);
+}
+
+void cli() {
+    iosifTestCLI(std::cin, std::cout);
+}
+
+int main() {
+    noCli();
     return 0;
 }
+
