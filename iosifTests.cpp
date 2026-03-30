@@ -21,7 +21,7 @@ long long iosifTest(ArrayList<int>& arrayList, size_t step)
     auto startTime = std::chrono::high_resolution_clock::now();
     while (size > 1)
     {
-        index = (index + step) % size;
+        index = (index + step - 1) % size;
         arrayList.pop(index);
         --size;
     }
